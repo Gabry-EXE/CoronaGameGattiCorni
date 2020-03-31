@@ -1,9 +1,9 @@
 Classi:
-  - Input
-  - Output
-  - Player
-  - EnemySpawner
-  - Enemy
+  - Input //LUCA
+  - Output //LUCA
+  - Player //GABRY
+  - EnemySpawner //YEHOR
+  - Enemy //NICOLA
   
 Input:
   Metodi:
@@ -11,6 +11,41 @@ Input:
     
 Output:
   Metodi:
-    - PrintChar(pos, glyph)
+    - PrintChar(pos, glyph, color)
     - char GetChar(pos)
-    - Fill(pos1, pos2, glyph)
+    - Fill(pos1, pos2, glyph, color)
+    
+Player:
+  Membri:
+    - COORD m_pos //coordinate del primo uguale
+    - int m_size
+    - int m_lives
+  Metodi:
+   - Start()
+   - Update() // void Player::Update()
+   - Move()
+   
+EnemyManager
+  Campi:
+    std::vector<Enemy> enemies; //enemies.size() enemies[0] enemies.emplace_back()
+  Metodi:
+    - Start()
+    - Update() //enemies[i].Update()
+    - Spawn()
+    - DeleteEnemy()
+    
+Enemy
+  Membri:
+    - COORD m_pos
+  Metodi:
+   - Start()
+   - Update() //Move()
+   - Move()
+  
+  
+  
+  
+  
+  
+  
+  
