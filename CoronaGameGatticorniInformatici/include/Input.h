@@ -5,9 +5,10 @@
 class Input
 {
     public:
-        Input();
+        void IsPressed();
 
     private:
+        Input();
 };
 
 #endif // INPUT_H
