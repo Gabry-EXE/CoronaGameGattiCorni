@@ -1,5 +1,2 @@
-#include "../header/Enemy.h"
+#include "Enemy.h"
 
-int blabla(){
-    return 15;
-}
