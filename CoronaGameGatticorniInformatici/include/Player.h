@@ -5,9 +5,15 @@
 class Player
 {
     public:
-        Player();
-
+        void Start();
+        void Update();
+        void TakeDamage();
     private:
+        Player();
+        COORD m_pos;
+        int m_size;
+        int m_lives;
+        void Move();
 };
 
 #endif // PLAYER_H
