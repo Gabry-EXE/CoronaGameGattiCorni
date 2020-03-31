@@ -5,6 +5,8 @@ using namespace std;
 
 int main()
 {
-    cout << "Io sono il capo" << endl;
+    cout << "F**k" << endl;
+
+    cout << "github fa schifo" << endl;
     return 0;
 }
