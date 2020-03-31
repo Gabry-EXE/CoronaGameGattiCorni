@@ -1,0 +1,16 @@
+Classi:
+  - Input
+  - Output
+  - Player
+  - EnemySpawner
+  - Enemy
+  
+Input:
+  Metodi:
+    - IsPressed(key_code)
+    
+Output:
+  Metodi:
+    - PrintChar(pos, glyph)
+    - char GetChar(pos)
+    - Fill(pos1, pos2, glyph)
