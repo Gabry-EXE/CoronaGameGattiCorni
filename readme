@@ -49,17 +49,22 @@ Enemy:
   SINGLETON:
   
 //DICHIARAZIONE DEL SINGLETON
+
+//.h
 EnemyManager:
 private:
-  static EnemyManager m_instance;
   std::vector<Enemy> enemies;
 public:
-  static EnemyManager Get() {
-    return m_instance;
-  }
+  static EnemyManager Get();
   void Start();
   void Update();
   void Spawn();
+  
+//.cpp
+static EnemyManager Get() {
+  static EnemyManager s_instance;
+  return s_instance;
+}
   
  
 //UTILIZZO DEL SINGLETON
