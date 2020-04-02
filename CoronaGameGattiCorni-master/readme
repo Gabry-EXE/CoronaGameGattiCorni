@@ -1,0 +1,72 @@
+Classi:
+  - Input //LUCA
+  - Output //LUCA
+  - Player //GABRY
+  - EnemySpawner //YEHOR
+  - Enemy //NICOLA
+  
+Input:
+  Metodi:
+    - IsPressed(key_code)
+    
+Output:
+  Metodi:
+    - PrintChar(pos, glyph, color)
+    - char GetChar(pos)
+    - Fill(pos1, pos2, glyph, color)
+    
+Player:
+  Membri:
+    - COORD m_pos //coordinate del primo uguale
+    - int m_size
+    - int m_lives
+  Metodi:
+   - Start()
+   - Update() // void Player::Update()
+   - Move()
+   - TakeDamage()
+   
+EnemyManager:
+  Campi:
+    std::vector<Enemy> enemies; //enemies.size() enemies[0] enemies.emplace_back()
+  Metodi:
+    - Start()
+    - Update() //enemies[i].Update() if(enemies[i].colliding) DeleteEnemy()
+    - Spawn()
+    - DeleteEnemy()
+    
+Enemy:
+  Membri:
+    - COORD m_pos
+  Metodi:
+   - Start()
+   - Update() //Move()
+   - Move()
+  Campi:
+   - bool colliding
+  
+  
+  SINGLETON:
+  
+//DICHIARAZIONE DEL SINGLETON
+EnemyManager:
+private:
+  static EnemyManager m_instance;
+  std::vector<Enemy> enemies;
+public:
+  static EnemyManager Get() {
+    return m_instance;
+  }
+  void Start();
+  void Update();
+  void Spawn();
+  
+ 
+//UTILIZZO DEL SINGLETON
+EnemyManager::Get().Start()
+  
+//thread sleep
+std::this_thread::sleep_for(std::chrono::milliseconds(500))
+  
+  
+  
