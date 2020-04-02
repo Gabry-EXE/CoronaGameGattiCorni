@@ -6,15 +6,28 @@
 class Player
 {
     public:
-        void Start();
+
         void Update();
-        void TakeDamage();
+
+        void TakeDamage(); //Decrementa il valore della vita (1 punto)
+        void ScorePoint( int points = 1 ); //Incrementa il punteggio (valore di default: 1)
+
+        static Player& Get();
+
     private:
+
         Player();
-        COORD m_pos;
-        int m_size;
-        int m_lives;
+
         void Move();
+        void EndGame();
+
+        void stepLeft();
+        void stepRight();
+
+        COORD m_pos;
+        int m_length;
+        int m_lives;
+        int m_score;
 };
 
 #endif // PLAYER_H
