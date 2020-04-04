@@ -1,6 +1,8 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
+#include <windows.h>
+#include <Output.h>
 
 class Enemy
 {

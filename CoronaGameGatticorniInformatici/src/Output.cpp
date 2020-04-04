@@ -51,6 +51,7 @@ void Output::Update()
                        bufferSize, //how much
                        { 0, 0 }, //where
                        &writeRect); //windows need this, I don't
+   std::this_thread::sleep_for(std::chrono::seconds((int)(DELTA_TIME * 1000)));
 }
 
 Output& Output::Get()

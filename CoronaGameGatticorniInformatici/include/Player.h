@@ -8,12 +8,10 @@ class Player
     public:
 
         void Update();
-
         void TakeDamage(); //Decrementa il valore della vita (1 punto)
         void ScorePoint( int points = 1 ); //Incrementa il punteggio (valore di default: 1)
 
         static Player& Get();
-
     private:
 
         Player();
