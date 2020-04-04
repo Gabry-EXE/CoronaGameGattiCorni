@@ -9,6 +9,9 @@ class Player
         void Start();
         void Update();
         void TakeDamage();
+
+        static Player Get();
+
     private:
         Player();
         COORD m_pos;

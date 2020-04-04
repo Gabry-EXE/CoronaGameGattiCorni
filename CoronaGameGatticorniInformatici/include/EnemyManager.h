@@ -10,6 +10,7 @@ class EnemyManager
     public:
         void Start();
         void Update();
+        static EnemyManager Get();
     private:
         EnemyManager();
 

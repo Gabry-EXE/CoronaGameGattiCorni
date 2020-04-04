@@ -23,7 +23,7 @@ void Enemy::Update()
     }
     else
     {
-        Output::Get().PrintChar(m_pos, /*enemyGlyph*/, /*FOREGROUND_WHITE*/)
+        Output::Get().PrintChar(m_pos, '$'/*enemyGlyph*/, FOREGROUND_WHITE);
     }
 };
 
