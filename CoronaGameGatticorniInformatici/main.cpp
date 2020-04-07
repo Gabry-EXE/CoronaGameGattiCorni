@@ -4,18 +4,29 @@
 
 bool inGame = true;
 
+void PlayerThread()
+{
+    while(inGame)
+    {
+        Player::Get().Update();
+        std::this_thread::sleep_for(std::chrono::microseconds(1));
+    }
+}
+
 int main()
 {
     Player::Get().Start();
     Output::Get().Start();
 
+    std::thread playerThread(PlayerThread);
+
     while(inGame)
     {
-        Player::Get().Update(); //check input and move player
-        EnemyManager::Get().Update(); //spawn enemies
         Output::Get().Update(); //print the screen
+        EnemyManager::Get().Update(); //spawn enemies
     }
 
+    playerThread.join();
 
     return 0;
 }

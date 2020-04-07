@@ -5,7 +5,7 @@ Player::Player(){}
 void Player::Start(){
     m_lives = 7;
     m_score = 0;
-    m_length = 5;
+    m_length = 7;
     m_pos.X = SCREEN_WIDTH/2;
     m_pos.Y = SCREEN_HEIGHT - 7;
     Move();
