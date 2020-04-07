@@ -8,22 +8,31 @@ EnemyManager::Get()
 
 void EnemyManger::Update()
 {
+    if (m_timer <= 0)
+    {
+        Spawn();
+        m_timer = 1.5;
+    }
+    else
+    {
+        m_timer -= DELTA_TIME;
+    }
+
     for (int i = 0; i<enemies.size()   ;i++ )
-        {
-            enemies[i].Update();
-            if (enemies[i].isColliding)
-                DeleteEnemy();
-        }
+    {
+        enemies[i].Update();
+        if (enemies[i].isColliding)
+            DeleteEnemy(enemies, i);
+    }
 }
 
 
 EnemyManger::EnemyManager()
 {
-    Spawn();
-    DeleteEnemy();
+    m_timer = 1.5;
 }
 
-void Spawn()
+void EnemyManager::Spawn()
 {
 
     Enemy new_enemy(rand()%(SCREEN_WIDTH)+1);
@@ -33,8 +42,8 @@ void Spawn()
 }
 
 
-void DeleteEnemy()
+void EnemyManager::DeleteEnemy(const int &INDEX)
 {
-
+    enemies.erase(enemies.begin() + INDEX);
 }
 
