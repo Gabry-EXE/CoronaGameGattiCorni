@@ -33,10 +33,10 @@ class Output
     private:
         Output();
 
-        HANDLE screenBuffer;
-        COORD bufferSize;
-        SMALL_RECT writeRect; //where to write data
-        CHAR_INFO charBuffer[SCREEN_WIDTH * SCREEN_HEIGHT];
+        HANDLE m_screenBuffer;
+        COORD m_bufferSize;
+        SMALL_RECT m_writeRect; //where to write data
+        CHAR_INFO m_charBuffer[SCREEN_WIDTH * SCREEN_HEIGHT];
 };
 
 #endif // OUTPUT_H
