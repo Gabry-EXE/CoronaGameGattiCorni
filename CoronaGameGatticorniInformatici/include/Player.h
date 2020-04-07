@@ -8,7 +8,7 @@
 class Player
 {
     public:
-
+        void Start();
         void Update();
         void TakeDamage(); //Decrementa il valore della vita (1 punto)
         void ScorePoint( const int &points = 1 ); //Incrementa il punteggio (valore di default: 1)

@@ -1,11 +1,14 @@
 #include "Player.h"
 
-Player::Player(){
+Player::Player(){}
+
+void Player::Start(){
     m_lives = 7;
     m_score = 0;
     m_length = 5;
     m_pos.X = SCREEN_WIDTH/2;
     m_pos.Y = SCREEN_HEIGHT - 7;
+    Move();
 }
 
 void Player::Update(){
@@ -30,7 +33,7 @@ void Player::TakeDamage(){
     }
 }
 
-void Player::ScorePoint( int points ){
+void Player::ScorePoint( const int &points ){
     m_score += points;
 }
 
@@ -54,7 +57,7 @@ void Player::stepRight(){
 
 void Player::Move(){
     //Clear the line where the player is.
-    FillChar( {0, m_pos.Y}, {SCREEN_WIDTH, m_pos.Y}, ' ', /*WORD &color*/);
+    Output::Get().FillChar( { 0, m_pos.Y }, { SCREEN_WIDTH, 1 }, ' ', FOREGROUND_WHITE);
     //Print the player in the new position.
-    FillChar( m_pos, (m_pos.X + m_length, m_pos.Y), '=', /*WORD &color*/);
+    Output::Get().FillChar( m_pos, { m_length, 1 }, '=', FOREGROUND_WHITE);
 }

@@ -28,6 +28,7 @@ class Output
         void PrintChar(const COORD &position, const char &glyph, const WORD &color);
         char GetChar(const COORD &position);
         void FillChar(const COORD &pos, const COORD &rectSize, const char &glyph, const WORD &color);
+        void Start();
         void Update();
         static Output& Get();
     private:

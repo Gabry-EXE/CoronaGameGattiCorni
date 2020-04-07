@@ -7,14 +7,15 @@ bool inGame = true;
 int main()
 {
     Player::Get().Start();
-    EnemyManager::Get().Start();
+    Output::Get().Start();
 
     while(inGame)
     {
-        Output::Get().Update(); //print the screen
         Player::Get().Update(); //check input and move player
         EnemyManager::Get().Update(); //spawn enemies
+        Output::Get().Update(); //print the screen
     }
+
 
     return 0;
 }

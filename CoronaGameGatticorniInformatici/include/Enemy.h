@@ -2,7 +2,7 @@
 #define ENEMY_H
 
 #include "Output.h"
-
+#include "Player.h"
 
 class Enemy
 {

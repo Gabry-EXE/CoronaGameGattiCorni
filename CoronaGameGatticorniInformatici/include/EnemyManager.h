@@ -12,12 +12,9 @@
 class EnemyManager
 {
     public:
-        void Start();
         void Update();
         static EnemyManager& Get();
     private:
-        srand(time(NULL));
-
         EnemyManager();
 
         std::vector<Enemy> enemies;
@@ -25,10 +22,6 @@ class EnemyManager
         void Spawn();
         void DeleteEnemy(const int &INDEX);
         float m_timer;
-
-    public:
-        static EnemyManager Get();
-
 };
 
 #endif // ENEMYMANAGER_H

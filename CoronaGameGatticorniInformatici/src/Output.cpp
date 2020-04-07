@@ -1,6 +1,8 @@
 #include "Output.h"
 
-Output::Output()
+Output::Output(){}
+
+void Output::Start()
 {
     //set the write destination rectangle
     m_writeRect.Left = 0;
@@ -11,7 +13,7 @@ Output::Output()
     //initialize charBuffer
     for(int i = 0; i < SCREEN_WIDTH * SCREEN_HEIGHT; i++)
     {
-        m_charBuffer[i].Attributes = FOREGROUND_INTENSITY;
+        m_charBuffer[i].Attributes = BACKGROUND_POOP;
         m_charBuffer[i].Char.AsciiChar = ' ';
     }
 
@@ -34,9 +36,9 @@ char Output::GetChar(const COORD &position)
 
 void Output::FillChar(const COORD &pos, const COORD &rectSize, const char &glyph, const WORD &color)
 {
-    for(int y = pos.Y; y < pos.Y + rectSize.Y; y++)
+    for(int y = pos.Y; y < (pos.Y + rectSize.Y); y++)
     {
-        for(int x = pos.X; x < pos.X + rectSize.X; x++)
+        for(int x = pos.X; x < (pos.X + rectSize.X); x++)
         {
             PrintChar({ x, y }, glyph, color);
         }

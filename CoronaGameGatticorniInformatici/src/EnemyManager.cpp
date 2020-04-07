@@ -1,17 +1,17 @@
 #include "EnemyManager.h"
 
-EnemyManager::Get()
+EnemyManager& EnemyManager::Get()
 {
     static EnemyManager m_instance;
     return m_instance;
 }
 
-void EnemyManger::Update()
+void EnemyManager::Update()
 {
     if (m_timer <= 0)
     {
         Spawn();
-        m_timer = 1.5;
+        m_timer = 2;
     }
     else
     {
@@ -22,14 +22,15 @@ void EnemyManger::Update()
     {
         enemies[i].Update();
         if (enemies[i].isColliding)
-            DeleteEnemy(enemies, i);
+            DeleteEnemy(i);
     }
 }
 
 
-EnemyManger::EnemyManager()
+EnemyManager::EnemyManager()
 {
-    m_timer = 1.5;
+    srand(time(NULL));
+    m_timer = 2;
 }
 
 void EnemyManager::Spawn()
@@ -37,7 +38,7 @@ void EnemyManager::Spawn()
 
     Enemy new_enemy(rand()%(SCREEN_WIDTH)+1);
 
-    enemies.emplace.push_back(new_enemy);
+    enemies.emplace_back(new_enemy);
 
 }
 

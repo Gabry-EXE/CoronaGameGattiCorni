@@ -3,7 +3,7 @@
 
 Enemy::Enemy(const int &x)
 {
-    m_timer = 0.8;
+    m_timer = 0.2;
     isColliding = false;
     m_pos.X = x;
     m_pos.Y = 0;
@@ -15,7 +15,7 @@ void Enemy::Update()
     if(m_timer <= 0)
     {
         Move();
-        m_timer = 0.8;
+        m_timer = 0.2;
     }
     else
     {
@@ -26,7 +26,7 @@ void Enemy::Update()
 void Enemy::Move()
 {
     //delete enemy char in the current position, update enemy position
-    Output::Get().PrintChar(m_pos, ' ', /*FOREGROUND_WHITE*/)
+    Output::Get().PrintChar(m_pos, ' ', FOREGROUND_WHITE);
     m_pos.Y++;
 
     //verify char in the new position; if space it became enemy char, if not space it's colliding with player/bottom of matrix
@@ -34,16 +34,16 @@ void Enemy::Move()
     {
         if(Output::Get().GetChar(m_pos) == '=')
         {
-            Player::get().ScorePoint();
+            Player::Get().ScorePoint();
         }
         else
         {
-            Player::get().TakeDamage();
+            Player::Get().TakeDamage();
         }
         isColliding = true;
     }
     else
     {
-        Output::Get().PrintChar(m_pos, /*enemyGlyph*/, /*FOREGROUND_WHITE*/)
+        Output::Get().PrintChar(m_pos, '@', FOREGROUND_WHITE);
     }
 };
