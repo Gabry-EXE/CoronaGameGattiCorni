@@ -13,7 +13,7 @@ void Output::Start()
     //initialize charBuffer
     for(int i = 0; i < SCREEN_WIDTH * SCREEN_HEIGHT; i++)
     {
-        m_charBuffer[i].Attributes = BACKGROUND_POOP;
+        m_charBuffer[i].Attributes = BACKGROUND_BLUE;
         m_charBuffer[i].Char.AsciiChar = ' ';
     }
 

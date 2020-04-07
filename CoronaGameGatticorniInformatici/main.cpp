@@ -15,8 +15,8 @@ void PlayerThread()
 
 int main()
 {
-    Player::Get().Start();
     Output::Get().Start();
+    Player::Get().Start();
 
     std::thread playerThread(PlayerThread);
 
