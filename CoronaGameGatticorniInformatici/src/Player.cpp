@@ -5,12 +5,12 @@ Player::Player(){
     m_score = 0;
     m_length = 5;
     m_pos.X = SCREEN_WIDTH/2;
-    m_pos.Y = SCREEN_HEIGHT - 5;
+    m_pos.Y = SCREEN_HEIGHT - 7;
 }
 
 void Player::Update(){
     if( m_lives <= 0 ){
-        EndGame();
+        //EndGame();
     }
     if( Input::Get().IsPressed( VK_LEFT ) ){
         stepLeft();
@@ -18,6 +18,7 @@ void Player::Update(){
     if( Input::Get().IsPressed( VK_RIGHT ) ){
         stepRight();
     }
+    Move();
 }
 
 void Player::TakeDamage(){
@@ -39,14 +40,21 @@ Player& Player::Get()
     return s_instance;
 }
 
-Player::stepLeft(){
+void Player::stepLeft(){
     if( m_pos.X > 0 ){
         m_pos.X--;
     }
 }
 
-Player::stepRight(){
+void Player::stepRight(){
     if( m_pos.X < SCREEN_WIDTH-m_length ){
-
+        m_pos.X++;
     }
+}
+
+void Player::Move(){
+    //Clear the line where the player is.
+    FillChar( {0, m_pos.Y}, {SCREEN_WIDTH, m_pos.Y}, ' ', /*WORD &color*/);
+    //Print the player in the new position.
+    FillChar( m_pos, (m_pos.X + m_length, m_pos.Y), '=', /*WORD &color*/);
 }
