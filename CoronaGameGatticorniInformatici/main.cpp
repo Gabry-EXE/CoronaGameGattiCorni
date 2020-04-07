@@ -11,9 +11,9 @@ int main()
 
     while(inGame)
     {
-        Output::Get().Update();
-        Player::Get().Update();
-        EnemyManager::Get().Update();
+        Output::Get().Update(); //print the screen
+        Player::Get().Update(); //check input and move player
+        EnemyManager::Get().Update(); //spawn enemies
     }
 
     return 0;

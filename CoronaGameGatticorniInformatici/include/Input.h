@@ -12,10 +12,10 @@ class Input
         static Input& Get();
     private:
         Input();
-        HANDLE hStdIn; //standard input handle
-        DWORD readNums; //number of inputs
-        INPUT_RECORD inputBuffer[128];
-        bool canPress; //to prevent holding a key
+        HANDLE m_hStdIn; //standard input handle
+        DWORD m_readNums; //number of inputs
+        INPUT_RECORD m_inputBuffer[128];
+        bool m_canPress; //to prevent holding a key
 };
 
 #endif // INPUT_H
