@@ -26,9 +26,9 @@ void Enemy::Update()
 void Enemy::Move()
 {
     //delete enemy char in the current position, update enemy position
-    Output::Get().PrintChar(m_pos, '|', FOREGROUND_RED | FOREGROUND_INTENSITY | BACKGROUND_BLUE);
-    Output::Get().PrintChar({ m_pos.X, m_pos.Y - 1}, ' ', BACKGROUND_BLUE);
-    m_pos.Y++;
+    Output::Get().PrintChar(m_pos, ' ', BACKGROUND_BLUE);
+    if(m_pos.Y < SCREEN_HEIGHT - 1)
+        m_pos.Y++;
 
     //verify char in the new position; if space it became enemy char, if not space it's colliding with player/bottom of matrix
     if (Output::Get().GetChar(m_pos) != ' ')
@@ -37,7 +37,7 @@ void Enemy::Move()
         {
             Player::Get().ScorePoint();
         }
-        else
+        else if(Output::Get().GetChar(m_pos) == '-')
         {
             Player::Get().TakeDamage();
         }

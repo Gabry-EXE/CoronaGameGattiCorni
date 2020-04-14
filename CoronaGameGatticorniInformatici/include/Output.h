@@ -2,7 +2,7 @@
 #define OUTPUT_H
 
 #define SCREEN_WIDTH 30
-#define SCREEN_HEIGHT 30
+#define SCREEN_HEIGHT 25
 
 #define DELTA_TIME 0.0417
 

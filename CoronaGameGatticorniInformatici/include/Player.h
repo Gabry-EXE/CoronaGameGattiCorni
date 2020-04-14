@@ -18,7 +18,8 @@ class Player
 
         Player();
 
-        void Move();
+        void PrintPlayer();
+        void PrintLifeBars();
         void EndGame();
 
         void stepLeft();
