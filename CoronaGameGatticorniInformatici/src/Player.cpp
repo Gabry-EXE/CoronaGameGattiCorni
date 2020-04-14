@@ -2,6 +2,8 @@
 
 Player::Player() {}
 
+extern bool inGame;
+
 void Player::Start()
 {
     m_lives = 7;
@@ -15,10 +17,6 @@ void Player::Start()
 
 void Player::Update()
 {
-    if( m_lives <= 0 )
-    {
-        //EndGame();
-    }
     if( Input::Get().IsPressed( VK_LEFT ) )
     {
         stepLeft();
@@ -28,19 +26,16 @@ void Player::Update()
         stepRight();
     }
     PrintPlayer();
-    PrintLifeBars();
 }
 
 void Player::TakeDamage()
 {
-    if( m_lives > 0 )
+    m_lives--;
+    PrintLifeBars();
+
+    if( m_lives <= 0 )
     {
-        m_lives--;
-        PrintLifeBars();
-    }
-    else
-    {
-        //error.
+        EndGame();
     }
 }
 
@@ -89,4 +84,10 @@ void Player::PrintLifeBars()
     '-',
     BACKGROUND_BLUE | BACKGROUND_INTENSITY |
     FOREGROUND_WHITE | FOREGROUND_INTENSITY);
+}
+
+void Player::EndGame()
+{
+    Output::Get().FillChar({ 0, 0 }, { SCREEN_WIDTH, SCREEN_HEIGHT }, ' ', BACKGROUND_POOP);
+    inGame = false;
 }

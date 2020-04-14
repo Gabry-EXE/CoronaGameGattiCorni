@@ -3,7 +3,7 @@
 
 Enemy::Enemy(const int &x)
 {
-    m_timer = 0.2;
+    m_timer = 0.02;
     isColliding = false;
     m_pos.X = x;
     m_pos.Y = 0;
@@ -15,7 +15,7 @@ void Enemy::Update()
     if(m_timer <= 0)
     {
         Move();
-        m_timer = 0.2;
+        m_timer = 0.02;
     }
     else
     {

@@ -1,6 +1,7 @@
 #include <Output.h>
 #include <Player.h>
 #include <EnemyManager.h>
+#include <conio.h>
 
 bool inGame = true;
 
@@ -27,6 +28,8 @@ int main()
     }
 
     playerThread.join();
+
+    getch();
 
     return 0;
 }

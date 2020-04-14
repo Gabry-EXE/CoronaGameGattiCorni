@@ -11,7 +11,7 @@ void EnemyManager::Update()
     if (m_timer <= 0)
     {
         Spawn();
-        m_timer = 4;
+        m_timer = 0.02;
     }
     else
     {
@@ -30,7 +30,7 @@ void EnemyManager::Update()
 EnemyManager::EnemyManager()
 {
     srand(time(NULL));
-    m_timer = 4;
+    m_timer = 0.02;
 }
 
 void EnemyManager::Spawn()
