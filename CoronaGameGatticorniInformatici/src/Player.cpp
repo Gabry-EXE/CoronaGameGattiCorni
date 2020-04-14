@@ -32,6 +32,7 @@ void Player::TakeDamage()
 {
     m_lives--;
     PrintLifeBars();
+    Output::Get().PrintChar( {0,0}, (char)m_lives + '0', FOREGROUND_WHITE);
 
     if( m_lives <= 0 )
     {
@@ -69,25 +70,24 @@ void Player::stepRight()
 void Player::PrintPlayer()
 {
     //Clear the line where the player is.
-    Output::Get().FillChar( { 0, m_pos.Y }, { SCREEN_WIDTH, 1 }, ' ', BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+    Output::Get().FillChar( { 0, m_pos.Y }, { SCREEN_WIDTH, 1 }, ' ', BACKGROUND_BLUE);
     //Print the player in the new position.
-    Output::Get().FillChar( m_pos, { m_length, 1 }, '=', FOREGROUND_WHITE | FOREGROUND_INTENSITY | BACKGROUND_BLUE | BACKGROUND_INTENSITY);
+    Output::Get().FillChar( m_pos, { (short)m_length, 1 }, '=', FOREGROUND_WHITE | FOREGROUND_INTENSITY | BACKGROUND_BLUE);
 }
 void Player::PrintLifeBars()
 {
     Output::Get().FillChar({ 0, SCREEN_HEIGHT - 7 },
     { SCREEN_WIDTH, 7 },
     ' ',
-    BACKGROUND_BLUE | BACKGROUND_INTENSITY);
-    Output::Get().FillChar({ 0, SCREEN_HEIGHT - m_lives },
+    BACKGROUND_BLUE);
+    Output::Get().FillChar({ 0, SCREEN_HEIGHT - (short)m_lives },
     { SCREEN_WIDTH, m_lives },
     '-',
-    BACKGROUND_BLUE | BACKGROUND_INTENSITY |
+    BACKGROUND_BLUE |
     FOREGROUND_WHITE | FOREGROUND_INTENSITY);
 }
 
 void Player::EndGame()
 {
-    Output::Get().FillChar({ 0, 0 }, { SCREEN_WIDTH, SCREEN_HEIGHT }, ' ', BACKGROUND_POOP);
     inGame = false;
 }

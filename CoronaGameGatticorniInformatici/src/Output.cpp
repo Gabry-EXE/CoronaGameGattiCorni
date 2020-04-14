@@ -21,6 +21,9 @@ void Output::Start()
 
     m_screenBuffer = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, CONSOLE_TEXTMODE_BUFFER, NULL);
     SetConsoleActiveScreenBuffer(m_screenBuffer);
+
+    //PRINT GAME TITLE
+    PrintString(2, "CORONA_GAME.exe ", BACKGROUND_BLUE | FOREGROUND_YELLOW);
 }
 
 void Output::PrintChar(const COORD &position, const char &glyph, const WORD &color)
@@ -29,6 +32,26 @@ void Output::PrintChar(const COORD &position, const char &glyph, const WORD &col
     m_charBuffer[position.Y * SCREEN_WIDTH + position.X].Char.AsciiChar = glyph;
 }
 
+void Output::PrintString(const COORD &position, const std::string &string, const WORD &color)
+{
+    for(int i = 0; i < string.size(); i++)
+    {
+        if(i < SCREEN_WIDTH - 1)
+        {
+            PrintChar({ position.X + i, position.Y }, string[i], color);
+        }
+    }
+}
+void Output::PrintString(const int &yPos, const std::string &string, const WORD &color)
+{
+    for(int i = 0; i < string.size(); i++)
+    {
+        if(i < SCREEN_WIDTH - 1)
+        {
+            PrintChar({ SCREEN_WIDTH / 2 - string.size() / 2 + i, yPos }, string[i], color);
+        }
+    }
+}
 char Output::GetChar(const COORD &position)
 {
     return m_charBuffer[position.Y * SCREEN_WIDTH + position.X].Char.AsciiChar;

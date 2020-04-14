@@ -3,7 +3,7 @@
 
 Enemy::Enemy(const int &x)
 {
-    m_timer = 0.02;
+    m_timer = 0.3;
     isColliding = false;
     m_pos.X = x;
     m_pos.Y = 0;
@@ -15,7 +15,7 @@ void Enemy::Update()
     if(m_timer <= 0)
     {
         Move();
-        m_timer = 0.02;
+        m_timer = 0.3;
     }
     else
     {
@@ -36,15 +36,16 @@ void Enemy::Move()
         if(Output::Get().GetChar(m_pos) == '=')
         {
             Player::Get().ScorePoint();
+            isColliding = true;
         }
         else if(Output::Get().GetChar(m_pos) == '-')
         {
             Player::Get().TakeDamage();
+            isColliding = true;
         }
-        isColliding = true;
     }
     else
     {
-        Output::Get().PrintChar(m_pos, '@', FOREGROUND_YELLOW | BACKGROUND_BLUE);
+        Output::Get().PrintChar(m_pos, '@', FOREGROUND_RED | FOREGROUND_INTENSITY | BACKGROUND_BLUE);
     }
 };

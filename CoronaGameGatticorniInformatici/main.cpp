@@ -1,7 +1,9 @@
+#include <conio.h>
 #include <Output.h>
 #include <Player.h>
 #include <EnemyManager.h>
-#include <conio.h>
+#include <ctime>
+#include <cstdlib>
 
 bool inGame = true;
 
@@ -16,6 +18,7 @@ void PlayerThread()
 
 int main()
 {
+    srand(time(0));
     Output::Get().Start();
     Player::Get().Start();
 
@@ -27,9 +30,20 @@ int main()
         EnemyManager::Get().Update(); //spawn enemies
     }
 
+    //END GAME
+    Output::Get().Update();
+    //wait for player input before printing game stats
     playerThread.join();
 
-    getch();
+    Output::Get().FillChar({ 0, 0}, { SCREEN_WIDTH, SCREEN_HEIGHT }, ' ', BACKGROUND_PURPLE);
+
+    const std::string losePhrases[] = { "You're a loser", "You lost", "GG", "LOL, you lost", ":(", "You got corona", "Fatal error", "Execution killed" };
+    std::string losePhrase = losePhrases[rand() % 8];
+    Output::Get().PrintString( SCREEN_HEIGHT / 3, losePhrase, FOREGROUND_YELLOW | BACKGROUND_PURPLE);
+
+
+    Output::Get().Update();
+    while(!Input::Get().IsPressed(VK_ESCAPE)) {}
 
     return 0;
 }

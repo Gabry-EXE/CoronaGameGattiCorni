@@ -26,6 +26,8 @@ class Output
 {
     public:
         void PrintChar(const COORD &position, const char &glyph, const WORD &color);
+        void PrintString(const COORD &position, const std::string &string, const WORD &color);
+        void PrintString(const int &yPos, const std::string &string, const WORD &color);
         char GetChar(const COORD &position);
         void FillChar(const COORD &pos, const COORD &rectSize, const char &glyph, const WORD &color);
         void Start();

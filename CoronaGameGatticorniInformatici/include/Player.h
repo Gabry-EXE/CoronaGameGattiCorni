@@ -4,6 +4,7 @@
 #include <windows.h>
 #include "Output.h"
 #include "Input.h"
+#include <conio.h>
 
 class Player
 {
