@@ -9,14 +9,13 @@ class Enemy
     public:
         Enemy(const int &x);
 
+        //public variable for the EnemyManager
         bool isColliding;
-
-//        void Start(const int &x, const int &y);
         void Update();
 
     private:
-        float m_timer;
-        COORD m_pos;
+        float m_timer; //secs btw each move
+        COORD m_pos; //current position
         void Move();
 };
 
