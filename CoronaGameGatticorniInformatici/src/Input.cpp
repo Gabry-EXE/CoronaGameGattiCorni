@@ -4,7 +4,6 @@ Input::Input()
 {
     m_hStdIn = GetStdHandle(STD_INPUT_HANDLE);
     SetConsoleMode(m_hStdIn, ENABLE_WINDOW_INPUT);
-    m_canPress = true;
 }
 
 bool Input::IsPressed(const DWORD &keyCode)
@@ -20,22 +19,14 @@ bool Input::IsPressed(const DWORD &keyCode)
         //if the event is a key press
         if(m_inputBuffer[i].EventType == KEY_EVENT)
         {
-//            if(m_canPress)
-//            {
-                //if you just pressed a key, you can't press it again unless you release it
-//                m_canPress = false;
-                return m_inputBuffer[i].Event.KeyEvent.wVirtualKeyCode == keyCode;
-//            }
-
-            //if no keys are pressed, than you can press one
-//            if(!m_inputBuffer[i].Event.KeyEvent.bKeyDown)
-//                m_canPress = true;
+            return m_inputBuffer[i].Event.KeyEvent.wVirtualKeyCode == keyCode;
         }
     }
 
     return false;
 }
 
+//singleton
 Input& Input::Get()
 {
     static Input s_instance;
