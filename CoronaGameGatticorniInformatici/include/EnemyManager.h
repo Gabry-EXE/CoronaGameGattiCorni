@@ -21,7 +21,7 @@ class EnemyManager
 
         void Spawn();
         void DeleteEnemy(const int &INDEX);
-        float m_timer;
+        float m_timer; //secs btw each spawning
 };
 
 #endif // ENEMYMANAGER_H
