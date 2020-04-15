@@ -7,6 +7,7 @@ class Input
 {
     public:
         //https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+        //waits until a key is pressed and return true if keyCode is pressed
         bool IsPressed(const DWORD &keyCode);
 
         static Input& Get();
@@ -14,7 +15,7 @@ class Input
         Input();
         HANDLE m_hStdIn; //standard input handle
         DWORD m_readNums; //number of inputs
-        INPUT_RECORD m_inputBuffer[128];
+        INPUT_RECORD m_inputBuffer[1024];
         bool m_canPress; //to prevent holding a key
 };
 
