@@ -2,7 +2,7 @@
 
 Player::Player() {}
 
-extern bool inGame;
+extern bool inGame; //mani.cpp variable
 
 void Player::Start()
 {
@@ -32,7 +32,6 @@ void Player::TakeDamage()
 {
     m_lives--;
     PrintLifeBars();
-    Output::Get().PrintChar( {0,0}, (char)m_lives + '0', FOREGROUND_WHITE);
 
     if( m_lives <= 0 )
     {
@@ -45,6 +44,7 @@ void Player::ScorePoint( const int &points )
     m_score += points;
 }
 
+//singleton
 Player& Player::Get()
 {
     static Player s_instance;
@@ -61,7 +61,7 @@ void Player::stepLeft()
 
 void Player::stepRight()
 {
-    if( m_pos.X < SCREEN_WIDTH-m_length )
+    if( m_pos.X < SCREEN_WIDTH - m_length )
     {
         m_pos.X++;
     }
@@ -76,10 +76,12 @@ void Player::PrintPlayer()
 }
 void Player::PrintLifeBars()
 {
+    //clear the area of the lives
     Output::Get().FillChar({ 0, SCREEN_HEIGHT - 7 },
     { SCREEN_WIDTH, 7 },
     ' ',
     BACKGROUND_BLUE);
+    //print m_lives bars
     Output::Get().FillChar({ 0, SCREEN_HEIGHT - (short)m_lives },
     { SCREEN_WIDTH, m_lives },
     '-',
