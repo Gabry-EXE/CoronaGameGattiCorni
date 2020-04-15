@@ -78,6 +78,7 @@ void Output::Update()
    std::this_thread::sleep_for(std::chrono::milliseconds((int)(DELTA_TIME * 1000))); //when to write
 }
 
+//singleton
 Output& Output::Get()
 {
     static Output s_instance;
