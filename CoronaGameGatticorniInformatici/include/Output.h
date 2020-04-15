@@ -4,6 +4,7 @@
 #define SCREEN_WIDTH 30
 #define SCREEN_HEIGHT 25
 
+//time between each frame
 #define DELTA_TIME 0.0417
 
 //handy defines for colors
@@ -25,10 +26,15 @@
 class Output
 {
     public:
+        //print a single character at the given coordinates with the given color
         void PrintChar(const COORD &position, const char &glyph, const WORD &color);
+        //print a string of characters given the position and the color
         void PrintString(const COORD &position, const std::string &string, const WORD &color);
+        //print a string at y position at the center of the screen
         void PrintString(const int &yPos, const std::string &string, const WORD &color);
+        //return the character at a given poition
         char GetChar(const COORD &position);
+        //print a rectangle of chars given the coordinates of top left and the size of the rect
         void FillChar(const COORD &pos, const COORD &rectSize, const char &glyph, const WORD &color);
         void Start();
         void Update();
@@ -39,7 +45,7 @@ class Output
         HANDLE m_screenBuffer;
         COORD m_bufferSize;
         SMALL_RECT m_writeRect; //where to write data
-        CHAR_INFO m_charBuffer[SCREEN_WIDTH * SCREEN_HEIGHT];
+        CHAR_INFO m_charBuffer[SCREEN_WIDTH * SCREEN_HEIGHT]; //game display matrix
 };
 
 #endif // OUTPUT_H
