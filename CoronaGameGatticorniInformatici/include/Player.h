@@ -11,8 +11,10 @@ class Player
     public:
         void Start();
         void Update();
-        void TakeDamage(); //Decrementa il valore della vita (1 punto)
-        void ScorePoint( const int &points = 1 ); //Incrementa il punteggio (valore di default: 1)
+        //decrease the number of lives by 1
+        void TakeDamage();
+        //increase the score
+        void ScorePoint( const int &points = 1 );
 
         static Player& Get();
     private:
@@ -27,7 +29,7 @@ class Player
         void stepRight();
 
         COORD m_pos;
-        int m_length;
+        int m_length; //lenght of the bar
         int m_lives;
         int m_score;
 };
