@@ -13,7 +13,7 @@ void EnemyManager::Update()
     if (m_timer <= 0)
     {
         Spawn();
-        m_timer = 3.5;
+        m_timer = 2.5;
     }
     else
     {
@@ -40,7 +40,6 @@ void EnemyManager::Spawn()
     Enemy new_enemy(rand() % SCREEN_WIDTH + 1);
     enemies.push_back(new_enemy);
 }
-
 
 void EnemyManager::DeleteEnemy(const int &index)
 {

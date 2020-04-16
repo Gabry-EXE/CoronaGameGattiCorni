@@ -32,7 +32,7 @@ class Output
         void PrintString(const COORD &position, const std::string &string, const WORD &color);
         //print a string at y position at the center of the screen
         void PrintString(const int &yPos, const std::string &string, const WORD &color);
-        //return the character at a given poition
+        //return the character at a given position
         char GetChar(const COORD &position);
         //print a rectangle of chars given the coordinates of top left and the size of the rect
         void FillChar(const COORD &pos, const COORD &rectSize, const char &glyph, const WORD &color);

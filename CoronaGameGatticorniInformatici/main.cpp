@@ -34,12 +34,12 @@ int main()
     //END GAME
     //called manually because when the game finishes it would stops printing
     Output::Get().Update();
-    
+
     //wait for player input before printing game stats
     playerThread.join(); //join waits until the thread stops
 
     //clear the string
-    Output::Get().FillChar({ 0, 0}, { SCREEN_WIDTH, SCREEN_HEIGHT }, ' ', BACKGROUND_PURPLE);
+    Output::Get().FillChar({ 0, 0 }, { SCREEN_WIDTH, SCREEN_HEIGHT }, ' ', BACKGROUND_PURPLE);
 
     //pick a random phrase to be displayed
     const std::string losePhrases[] = { "You're a loser", "You lost", "GG", "LOL, you lost", ":(", "You got corona", "Fatal error", "Execution killed" };
