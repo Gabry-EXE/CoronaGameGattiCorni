@@ -1,19 +1,21 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
-#include <windows.h>
+#include "Output.h"
+#include "Player.h"
 
 class Enemy
 {
     public:
-        Enemy();
+        Enemy(const int &x);
 
+        //public variable for the EnemyManager
         bool isColliding;
-
-        void Start();
         void Update();
+
     private:
-        COORD m_pos;
+        float m_timer; //secs btw each move
+        COORD m_pos; //current position
         void Move();
 };
 

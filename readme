@@ -1,4 +1,4 @@
-Classi:
+Classes:
   - Input //LUCA
   - Output //LUCA
   - Player //GABRY
@@ -6,38 +6,69 @@ Classi:
   - Enemy //NICOLA
   
 Input:
-  Metodi:
+  Methods:
     - IsPressed(key_code)
     
 Output:
-  Metodi:
+  Methods:
     - PrintChar(pos, glyph, color)
     - char GetChar(pos)
     - Fill(pos1, pos2, glyph, color)
     
 Player:
-  Membri:
-    - COORD m_pos //coordinate del primo uguale
+  Members:
+    - COORD m_pos //coordinates of the first '='
     - int m_size
     - int m_lives
-  Metodi:
+  Methods:
    - Start()
-   - Update() // void Player::Update()
+   - Update()
    - Move()
+   - TakeDamage()
    
-EnemyManager
+EnemyManager:
   Campi:
-    std::vector<Enemy> enemies; //enemies.size() enemies[0] enemies.emplace_back()
-  Metodi:
+    std::vector<Enemy> enemies; //enemies.size() enemies[0] enemies.push_back()
+  Methods:
     - Start()
-    - Update() //enemies[i].Update()
+    - Update() //enemies[i].Update() if(enemies[i].colliding) DeleteEnemy()
     - Spawn()
     - DeleteEnemy()
     
-Enemy
-  Membri:
+Enemy:
+  Members:
     - COORD m_pos
-  Metodi:
+  Methods:
    - Start()
    - Update() //Move()
    - Move()
+
+  Fields:
+   - bool colliding
+   
+  SINGLETON:
+  
+//Singleton declaration
+
+//.h
+EnemyManager:
+private:
+  std::vector<Enemy> enemies;
+public:
+  static EnemyManager& Get();
+  void Start();
+  void Update();
+  void Spawn();
+  
+//.cpp
+static EnemyManager Get() {
+  static EnemyManager s_instance;
+  return s_instance;
+}
+  
+ 
+//Singleton use
+EnemyManager::Get().Start()
+  
+//thread sleep
+std::this_thread::sleep_for(std::chrono::milliseconds(500))
